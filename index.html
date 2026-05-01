@@ -4,16 +4,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>😈 BẠN ĐÃ BỊ LỪA RỒI 😈</title>
+    <title>😂 BẠN ĐÃ BỊ LỪA RỒI 😂</title>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@700;900&display=swap"
       rel="stylesheet" />
     <style>
       :root {
-        --neon-red: #ff2d55;
-        --neon-yellow: #ffd60a;
-        --neon-cyan: #00f5ff;
-        --neon-green: #39ff14;
-        --dark: #0a0a0a;
+        --accent: #ff6b00;
+        --accent-light: #ffb347;
+        --bg: #fffdf7;
+        --card-bg: #ffffff;
+        --text-dark: #1a1a1a;
+        --text-mid: #666;
+        --border: #1a1a1a;
       }
 
       * {
@@ -23,7 +25,7 @@
       }
 
       body {
-        background: var(--dark);
+        background: var(--bg);
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -34,25 +36,20 @@
         position: relative;
       }
 
-      /* Scanline overlay */
       body::before {
         content: '';
         position: fixed;
         inset: 0;
-        background: repeating-linear-gradient(0deg,
-            transparent,
-            transparent 2px,
-            rgba(0, 0, 0, 0.15) 2px,
-            rgba(0, 0, 0, 0.15) 4px);
+        background-image: radial-gradient(circle, #e0d8cc 1px, transparent 1px);
+        background-size: 28px 28px;
         pointer-events: none;
-        z-index: 999;
+        z-index: 0;
       }
 
-      /* ===== CONFETTI ===== */
       .confetti-piece {
         position: fixed;
-        width: 10px;
-        height: 14px;
+        width: 9px;
+        height: 13px;
         border-radius: 2px;
         top: -20px;
         animation: confettiFall linear forwards;
@@ -66,24 +63,23 @@
           opacity: 1;
         }
 
-        80% {
+        85% {
           opacity: 1;
         }
 
         100% {
-          transform: translateY(110vh) rotate(720deg) scaleX(-1);
+          transform: translateY(110vh) rotate(800deg) scaleX(-1);
           opacity: 0;
         }
       }
 
-      /* ===== FLOATING EMOJIS BG ===== */
       .emoji-bg {
         position: fixed;
-        font-size: 2rem;
         animation: floatUp linear infinite;
         pointer-events: none;
         z-index: 0;
-        opacity: 0.18;
+        opacity: 0.1;
+        user-select: none;
       }
 
       @keyframes floatUp {
@@ -96,27 +92,24 @@
         }
       }
 
-      /* ===== CARD ===== */
       .card {
         position: relative;
         z-index: 10;
-        background: linear-gradient(145deg, #111, #1a0010);
-        border: 3px solid var(--neon-red);
-        border-radius: 24px;
-        padding: 40px 32px 36px;
-        max-width: 420px;
+        background: var(--card-bg);
+        border: 3px solid var(--border);
+        border-radius: 28px;
+        padding: 44px 32px 36px;
+        max-width: 400px;
         width: 92vw;
         text-align: center;
-        box-shadow:
-          0 0 30px rgba(255, 45, 85, 0.5),
-          0 0 80px rgba(255, 45, 85, 0.2),
-          inset 0 0 30px rgba(255, 45, 85, 0.05);
-        animation: cardPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        box-shadow: 6px 6px 0px var(--border), 12px 12px 0px var(--accent);
+        animation: cardPop 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        animation-delay: 0.1s;
       }
 
       @keyframes cardPop {
         0% {
-          transform: scale(0.3) rotate(-10deg);
+          transform: scale(0.4) rotate(-8deg);
           opacity: 0;
         }
 
@@ -126,119 +119,205 @@
         }
       }
 
-      /* ===== HEADER EMOJI ===== */
-      .hero-emoji {
-        font-size: 5rem;
-        display: block;
-        margin-bottom: 8px;
-        animation: emojiDance 0.4s ease-in-out infinite alternate;
-        filter: drop-shadow(0 0 12px var(--neon-yellow));
-      }
-
-      @keyframes emojiDance {
-        0% {
-          transform: rotate(-12deg) scale(1);
-        }
-
-        100% {
-          transform: rotate(12deg) scale(1.15);
-        }
-      }
-
-      /* ===== BIG TROLL TITLE ===== */
-      .troll-title {
-        font-family: 'Bangers', cursive;
-        font-size: clamp(2.2rem, 9vw, 3.4rem);
-        letter-spacing: 3px;
-        color: var(--neon-red);
-        text-shadow:
-          3px 3px 0 #7a0020,
-          0 0 20px var(--neon-red),
-          0 0 50px rgba(255, 45, 85, 0.5);
-        animation: shake 0.3s ease-in-out infinite;
-        line-height: 1.1;
-        margin-bottom: 10px;
-      }
-
-      @keyframes shake {
-
-        0%,
-        100% {
-          transform: translateX(0) rotate(-1deg);
-        }
-
-        25% {
-          transform: translateX(-4px) rotate(1deg);
-        }
-
-        75% {
-          transform: translateX(4px) rotate(-1deg);
-        }
-      }
-
-      /* ===== DIVIDER ===== */
-      .divider {
-        width: 80%;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
-        margin: 16px auto;
-        box-shadow: 0 0 10px var(--neon-cyan);
-      }
-
-      /* ===== MAIN MESSAGE ===== */
-      .msg-box {
-        background: rgba(255, 214, 10, 0.07);
-        border: 1.5px dashed var(--neon-yellow);
-        border-radius: 14px;
-        padding: 18px 16px;
-        margin: 12px 0 20px;
-      }
-
-      .msg-main {
-        font-size: 1.05rem;
+      .badge {
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--accent);
         color: #fff;
-        line-height: 1.65;
-        font-weight: 700;
+        font-family: 'Bangers', cursive;
+        font-size: 1rem;
+        letter-spacing: 2px;
+        padding: 5px 22px;
+        border-radius: 99px;
+        white-space: nowrap;
+        border: 2.5px solid var(--border);
+        box-shadow: 3px 3px 0 var(--border);
+        animation: badgeBounce 1.2s ease-in-out infinite alternate;
       }
 
-      .msg-main .highlight {
-        color: var(--neon-yellow);
-        font-size: 1.15rem;
-        text-shadow: 0 0 8px var(--neon-yellow);
-        display: inline-block;
-        animation: pulseText 1s ease-in-out infinite alternate;
-      }
-
-      @keyframes pulseText {
+      @keyframes badgeBounce {
         from {
-          transform: scale(1);
+          transform: translateX(-50%) translateY(0);
         }
 
         to {
-          transform: scale(1.06);
+          transform: translateX(-50%) translateY(-5px);
         }
       }
 
-      .tag {
+      .corner {
+        position: absolute;
+        font-size: 1.4rem;
+        line-height: 1;
+      }
+
+      .corner.tl {
+        top: 14px;
+        left: 16px;
+        animation: wiggle 0.6s ease-in-out infinite alternate;
+      }
+
+      .corner.tr {
+        top: 14px;
+        right: 16px;
+        animation: wiggle 0.6s ease-in-out infinite alternate-reverse;
+      }
+
+      .corner.bl {
+        bottom: 14px;
+        left: 16px;
+        animation: wiggle 0.8s ease-in-out infinite alternate;
+      }
+
+      .corner.br {
+        bottom: 14px;
+        right: 16px;
+        animation: wiggle 0.8s ease-in-out infinite alternate-reverse;
+      }
+
+      @keyframes wiggle {
+        from {
+          transform: rotate(-15deg) scale(1);
+        }
+
+        to {
+          transform: rotate(15deg) scale(1.2);
+        }
+      }
+
+      .hero-emoji {
+        font-size: 5.5rem;
+        display: block;
+        margin-bottom: 4px;
+        animation: heroBounce 0.5s ease-in-out infinite alternate;
+        filter: drop-shadow(3px 3px 0 rgba(0, 0, 0, 0.12));
+      }
+
+      @keyframes heroBounce {
+        from {
+          transform: translateY(0) rotate(-8deg);
+        }
+
+        to {
+          transform: translateY(-10px) rotate(8deg) scale(1.1);
+        }
+      }
+
+      .troll-title {
+        font-family: 'Bangers', cursive;
+        font-size: clamp(2.6rem, 11vw, 3.8rem);
+        letter-spacing: 3px;
+        color: var(--text-dark);
+        line-height: 1.05;
+        margin-bottom: 4px;
+        animation: titleShake 0.25s ease-in-out infinite;
+      }
+
+      .troll-title span {
+        color: var(--accent);
         display: inline-block;
-        background: var(--neon-red);
+        -webkit-text-stroke: 1.5px var(--border);
+      }
+
+      @keyframes titleShake {
+
+        0%,
+        100% {
+          transform: translateX(0) rotate(-0.5deg);
+        }
+
+        33% {
+          transform: translateX(-3px) rotate(0.8deg);
+        }
+
+        66% {
+          transform: translateX(3px) rotate(-0.8deg);
+        }
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 16px 0;
+      }
+
+      .divider-line {
+        flex: 1;
+        height: 2px;
+        background: var(--border);
+      }
+
+      .divider-emoji {
+        font-size: 1rem;
+      }
+
+      .msg-box {
+        background: #fff9f0;
+        border: 2.5px solid var(--border);
+        border-radius: 16px;
+        padding: 18px 16px 16px;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .msg-box::before {
+        content: '💬';
+        position: absolute;
+        top: -14px;
+        left: 16px;
+        font-size: 1.3rem;
+        background: var(--bg);
+        padding: 0 4px;
+      }
+
+      .msg-main {
+        font-size: 0.97rem;
+        color: var(--text-dark);
+        line-height: 1.72;
+        font-weight: 700;
+      }
+
+      .msg-main .hl {
+        background: var(--accent);
+        color: #fff;
+        padding: 1px 8px;
+        border-radius: 6px;
+        display: inline-block;
+        animation: hlPop 0.9s ease-in-out infinite alternate;
+      }
+
+      @keyframes hlPop {
+        from {
+          transform: scale(1) rotate(-1deg);
+        }
+
+        to {
+          transform: scale(1.06) rotate(1deg);
+        }
+      }
+
+      .warning-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+        background: var(--text-dark);
         color: #fff;
         font-size: 0.75rem;
         font-weight: 900;
-        padding: 2px 10px;
+        padding: 4px 14px;
         border-radius: 99px;
-        margin-top: 10px;
-        letter-spacing: 1px;
+        letter-spacing: 0.8px;
         text-transform: uppercase;
-        box-shadow: 0 0 10px var(--neon-red);
       }
 
-      /* ===== SOCIAL BUTTONS ===== */
       .btn-group {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        margin-top: 10px;
+        gap: 11px;
       }
 
       .btn {
@@ -249,220 +328,151 @@
         padding: 14px 20px;
         border-radius: 14px;
         font-family: 'Nunito', sans-serif;
-        font-size: 1rem;
+        font-size: 0.98rem;
         font-weight: 900;
         text-decoration: none;
-        letter-spacing: 0.5px;
-        border: none;
+        border: 2.5px solid var(--border);
         cursor: pointer;
-        transition: transform 0.15s, box-shadow 0.15s;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: rgba(255, 255, 255, 0.08);
-        opacity: 0;
-        transition: opacity 0.2s;
-      }
-
-      .btn:hover::after {
-        opacity: 1;
+        transition: transform 0.12s, box-shadow 0.12s;
+        box-shadow: 3px 3px 0 var(--border);
+        color: var(--text-dark);
+        background: #fff;
       }
 
       .btn:hover {
-        transform: translateY(-3px) scale(1.03);
+        transform: translate(-2px, -2px);
+        box-shadow: 5px 5px 0 var(--border);
       }
 
       .btn:active {
-        transform: scale(0.97);
+        transform: translate(2px, 2px);
+        box-shadow: 1px 1px 0 var(--border);
       }
 
       .btn-fb {
-        background: linear-gradient(135deg, #1877f2, #0a56c4);
-        color: #fff;
-        box-shadow: 0 4px 20px rgba(24, 119, 242, 0.5);
+        background: #e8f0ff;
       }
 
       .btn-ig {
-        background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        color: #fff;
-        box-shadow: 0 4px 20px rgba(220, 39, 67, 0.5);
+        background: #fff0f5;
       }
 
       .btn-zl {
-        background: linear-gradient(135deg, #0068ff, #0091ff);
-        color: #fff;
-        box-shadow: 0 4px 20px rgba(0, 104, 255, 0.5);
+        background: #e8f5ff;
       }
 
       .btn-icon {
         font-size: 1.4rem;
       }
 
-      /* ===== FOOTER ===== */
+      .btn-label {
+        flex: 1;
+        text-align: left;
+      }
+
+      .btn-arrow {
+        font-size: 0.9rem;
+        color: var(--text-mid);
+      }
+
       .footer {
         margin-top: 22px;
         font-size: 0.78rem;
-        color: rgba(255, 255, 255, 0.25);
-        letter-spacing: 1px;
+        color: var(--text-mid);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
       }
 
-      .footer span {
-        color: var(--neon-green);
-        text-shadow: 0 0 6px var(--neon-green);
-      }
-
-      /* ===== CORNER DECOR ===== */
-      .corner {
-        position: absolute;
-        font-size: 1.4rem;
-        animation: spin linear 3s infinite;
-        opacity: 0.7;
-      }
-
-      .corner.tl {
-        top: 10px;
-        left: 12px;
-      }
-
-      .corner.tr {
-        top: 10px;
-        right: 12px;
-        animation-direction: reverse;
-      }
-
-      .corner.bl {
-        bottom: 10px;
-        left: 12px;
-      }
-
-      .corner.br {
-        bottom: 10px;
-        right: 12px;
-        animation-direction: reverse;
-      }
-
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* ===== BADGE ===== */
-      .badge {
-        position: absolute;
-        top: -18px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--neon-yellow);
-        color: #000;
-        font-family: 'Bangers', cursive;
-        font-size: 1rem;
-        letter-spacing: 2px;
-        padding: 4px 18px;
-        border-radius: 99px;
-        white-space: nowrap;
-        box-shadow: 0 0 16px var(--neon-yellow);
-        animation: badgePulse 1.5s ease-in-out infinite alternate;
-      }
-
-      @keyframes badgePulse {
-        from {
-          box-shadow: 0 0 10px var(--neon-yellow);
-        }
-
-        to {
-          box-shadow: 0 0 30px var(--neon-yellow), 0 0 60px rgba(255, 214, 10, 0.4);
-        }
+      .footer strong {
+        color: var(--accent);
+        font-weight: 900;
       }
     </style>
   </head>
 
   <body>
 
-    <!-- Floating bg emojis -->
     <script>
-      const bgEmojis = ['💀', '😂', '🤡', '💸', '🔥', '😈', '💣', '🎭', '🤣', '👀'];
-      bgEmojis.forEach((em, i) => {
+      const bgEmojis = ['😂', '🤡', '💸', '🔥', '😈', '🎭', '🤣', '👀', '💀', '😱'];
+      bgEmojis.forEach(em => {
         const el = document.createElement('div');
         el.classList.add('emoji-bg');
         el.textContent = em;
         el.style.left = (Math.random() * 95) + 'vw';
-        el.style.animationDuration = (6 + Math.random() * 8) + 's';
-        el.style.animationDelay = (Math.random() * 6) + 's';
-        el.style.fontSize = (1.2 + Math.random() * 2) + 'rem';
+        el.style.animationDuration = (7 + Math.random() * 9) + 's';
+        el.style.animationDelay = (Math.random() * 8) + 's';
+        el.style.fontSize = (1 + Math.random() * 1.8) + 'rem';
         document.body.appendChild(el);
       });
     </script>
 
-    <!-- Main card -->
     <div class="card">
       <div class="badge">⚠️ CẢNH BÁO QUAN TRỌNG ⚠️</div>
-
-      <div class="corner tl">⚡</div>
-      <div class="corner tr">⚡</div>
-      <div class="corner bl">💀</div>
-      <div class="corner br">💀</div>
+      <div class="corner tl">😂</div>
+      <div class="corner tr">🎉</div>
+      <div class="corner bl">💸</div>
+      <div class="corner br">🤡</div>
 
       <span class="hero-emoji">🤡</span>
+      <h1 class="troll-title">BẠN ĐÃ<br><span>BỊ LỪA</span>!</h1>
 
-      <h1 class="troll-title">BẠN ĐÃ<br>BỊ LỪA!</h1>
-
-      <div class="divider"></div>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <span class="divider-emoji">🎭</span>
+        <div class="divider-line"></div>
+      </div>
 
       <div class="msg-box">
         <p class="msg-main">
-          Đây là mã QR hiện <span class="highlight">thông tin tài xế</span> 🛵<br><br>
-          Mã chuyển khoản phải kêu <span class="highlight">tài xế đưa</span> cho bạn nha! 😤<br><br>
-          Đừng chuyển tiền vào đây nếu không muốn tặng quà cho tui 😈💸
+          Đây là mã QR hiện <span class="hl">thông tin tài xế</span> 🛵<br><br>
+          Mã chuyển khoản phải kêu <span class="hl">tài xế đưa</span> cho bạn nha! 😤<br><br>
+          Đừng chuyển tiền vào đây không thôi tiền bay mất đó nghe 💸
         </p>
-        <div class="tag">🚨 Không chuyển khoản vào đây 🚨</div>
+        <div class="warning-tag">🚨 Không chuyển khoản vào đây nha!</div>
       </div>
 
       <div class="btn-group">
         <a class="btn btn-fb" href="https://www.facebook.com/hoangkobeo04" target="_blank" rel="noopener">
-          <span class="btn-icon">📘</span> Facebook của tui nè
+          <span class="btn-icon">📘</span>
+          <span class="btn-label">Facebook nà</span>
+          <span class="btn-arrow">→</span>
         </a>
         <a class="btn btn-ig" href="https://www.instagram.com/hoangkobeo" target="_blank" rel="noopener">
-          <span class="btn-icon">📸</span> Instagram của tui nè
+          <span class="btn-icon">📸</span>
+          <span class="btn-label">Instagram nà</span>
+          <span class="btn-arrow">→</span>
         </a>
         <a class="btn btn-zl" href="https://zalo.me/0914598017" target="_blank" rel="noopener">
-          <span class="btn-icon">💬</span> Nhắn Zalo cho tui đi
+          <span class="btn-icon">💬</span>
+          <span class="btn-label">Dép lào nà</span>
+          <span class="btn-arrow">→</span>
         </a>
       </div>
 
-      <p class="footer">Made with 😈 by <span>hoangkobeo</span></p>
+      <p class="footer">Made with 😈 by <strong>hoangkobeo</strong></p>
     </div>
 
-    <!-- Confetti script -->
     <script>
-      const colors = ['#ff2d55', '#ffd60a', '#00f5ff', '#39ff14', '#bf5fff', '#ff9500', '#fff'];
+      const colors = ['#ff6b00', '#ffb347', '#1a1a1a', '#fff', '#ffd60a'];
       function launchConfetti(count) {
         for (let i = 0; i < count; i++) {
           const el = document.createElement('div');
           el.classList.add('confetti-piece');
           el.style.left = Math.random() * 100 + 'vw';
           el.style.background = colors[Math.floor(Math.random() * colors.length)];
-          el.style.animationDuration = (1.5 + Math.random() * 2.5) + 's';
-          el.style.animationDelay = (Math.random() * 1.5) + 's';
+          el.style.animationDuration = (1.8 + Math.random() * 2.5) + 's';
+          el.style.animationDelay = (Math.random() * 1.8) + 's';
           el.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+          el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
           document.body.appendChild(el);
           el.addEventListener('animationend', () => el.remove());
         }
       }
-      // Bắn confetti khi load
       window.addEventListener('load', () => {
-        launchConfetti(120);
-        // Bắn thêm sau 3s
-        setTimeout(() => launchConfetti(60), 3000);
+        launchConfetti(100);
+        setTimeout(() => launchConfetti(60), 2800);
       });
     </script>
   </body>
